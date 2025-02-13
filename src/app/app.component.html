@@ -6,12 +6,14 @@
 <div class="favorite">
   <p>My favorite people are:</p>
   <ul>
-    <li *ngFor="let fav of favorites">{{fav}} <button (click)="removeFavorite(fav)">Remove</button> </li>
+    <app-favorite-friend *ngFor="let fav of favorites" [favorite]="fav"
+      (removeFavorite)="removeFavorite($event)"></app-favorite-friend>
   </ul>
 </div>
 <div class="people">
   <ul>
-    <li *ngFor="let person of people">{{person}} <button *ngIf="!favorites.includes(person)" (click)="addFavorite(person)">Add favourite</button></li>
+    <app-friend-item *ngFor="let person of people" [person]="person" [showButton]="!favorites.includes(person)"
+      (addFavorite)="addFavorite($event)"></app-friend-item>
   </ul>
   <!-- Add your people component here -->
 </div>
